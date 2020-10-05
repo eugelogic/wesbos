@@ -10,14 +10,15 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-remove-trailing-slashes`,
-    {
-      resolve: `gatsby-plugin-prettier-build`,
-      options: {
-        types: ['html'],
-        concurrency: 20,
-        verbose: true,
-      },
-    },
+    // taking this off for a bit because its broken or choking on somthing...
+    // {
+    //   resolve: `gatsby-plugin-prettier-build`,
+    //   options: {
+    //     types: ['html'],
+    //     concurrency: 20,
+    //     verbose: true,
+    //   },
+    // },
     {
       // This tells us where the plugin lives
       // this one is in our node_modules
@@ -28,6 +29,7 @@ module.exports = {
         name: 'page',
       },
     },
+    `gatsby-plugin-twitter`,
     // Posts
     {
       resolve: `gatsby-source-filesystem`,
@@ -56,6 +58,7 @@ module.exports = {
       options: {
         root: __dirname,
         gatsbyRemarkPlugins: [
+          `gatsby-remark-embedder`,
           `gatsby-remark-copy-linked-files`,
           {
             resolve: 'gatsby-remark-vscode',
@@ -88,6 +91,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-embedder`,
           {
             resolve: `gatsby-remark-images`,
             options: {
